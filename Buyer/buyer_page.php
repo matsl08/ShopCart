@@ -9,11 +9,8 @@ if (!isset($_SESSION['buyer_id'])) {
     exit();
 }
 
-// Initiaize buyer ID to the current logged in buyer ID
+// Initialize buyer ID to the current logged-in buyer ID
 $buyer_id = $_SESSION['buyer_id'];
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -24,17 +21,22 @@ $buyer_id = $_SESSION['buyer_id'];
     <link rel="stylesheet" type="text/css" href="../css/buyer_page.css">
     <title>Buyer Page</title>
 
-<div class="topnav">
-    <h1><span>ShopCart</span></h1>
-    <a href="../Seller/seller_sign_up.php">Seller Centre</a>
-    <a href="buyer_profile.php" name="buyer_profile">Profile</a>
-    <a href="cart.php">Cart</a>
-    <a href="order_history.php" name="order_history">Order History</a>
-    <a href="../log_out.php" name="log_out">Log Out</a>
-</div> 
-<div class="user_header">
-<?php echo "<h4>Welcome, " . htmlspecialchars($_SESSION['buyer_name']) . "!</h4>"; ?>
-</div>
+    <div class="topnav">
+        <h1><span>ShopCart</span></h1>
+            <!-- Search Bar -->
+        <form method="GET" action="<?php echo $_SERVER['PHP_SELF']; ?>" class="search-form">
+            <input type="text" name="search" placeholder="Search for products..." value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
+            <button type="submit">Search</button>
+        </form>
+        <a href="../Seller/seller_sign_up.php">Seller Centre</a>
+        <a href="buyer_profile.php" name="buyer_profile">Profile</a>
+        <a href="cart.php">Cart</a>
+        <a href="order_history.php" name="order_history">Order History</a>
+        <a href="../log_out.php" name="log_out">Log Out</a>
+    </div> 
+    <div class="user_header">
+        <?php echo "<h4>Welcome, " . htmlspecialchars($_SESSION['buyer_name']) . "!</h4>"; ?>
+    </div>
 </head>
 <body>
 
@@ -42,6 +44,8 @@ $buyer_id = $_SESSION['buyer_id'];
 <!-- Products List -->
 <div class="content">
     <h2>Products List</h2>
+
+
 
     <?php if (isset($_SESSION['message'])): ?>
         <div class='order-message-container'>
@@ -54,12 +58,16 @@ $buyer_id = $_SESSION['buyer_id'];
 
     <?php
     $buyer = new Buyer($connect, $buyer_id);
-     
-    if($buyer->isProductsEmpty()){
-        echo "<p> No products yet. </p>";
+
+    if ($buyer->isProductsEmpty()) {
+        echo "<p>No products yet.</p>";
     }
 
-    $addedProducts = $buyer->displayProducts();
+    // Fetch search term
+    $searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
+
+    // Fetch products (filtered by search term if provided)
+    $addedProducts = $buyer->displaySearchProducts($searchTerm);
 
     while ($row = mysqli_fetch_assoc($addedProducts)) : ?>
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" style="display:inline;">
@@ -79,14 +87,14 @@ $buyer_id = $_SESSION['buyer_id'];
     <?php endwhile; ?>
 
 </div>
-<?php if (isset($_POST['add_to_cart'])) {
-       $response = $buyer->addToCart($_POST['item_name'],
-       $_POST['item_image'],
-       $_POST['item_price']);
-        echo $response;
-        header("refresh: 1;");
-        exit();
-} ?>
+<?php
+if (isset($_POST['add_to_cart'])) {
+    $response = $buyer->addToCart($_POST['item_name'], $_POST['item_image'], $_POST['item_price']);
+    echo $response;
+    header("refresh: 1;");
+    exit();
+}
+?>
 </center>
 </body>
 </html>

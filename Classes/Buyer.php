@@ -26,6 +26,18 @@ class Buyer extends User{
         return $result;
     }
 
+    // Fetch products with optional search filter
+public function displaySearchProducts($searchTerm = '') {
+    if (!empty($searchTerm)) {
+        $searchTerm = $this->db->real_escape_string($searchTerm);
+        $sql = "SELECT * FROM products WHERE item_name LIKE '%$searchTerm%' OR item_desc LIKE '%$searchTerm%'";
+    } else {
+        $sql = "SELECT * FROM products";
+    }
+    $result = mysqli_query($this->db, $sql);
+    return $result;
+}
+
     //Sign Up Function
     public function signUp($fname, $lname, $email, $password, $confirmPassword) {
         // Sanitize email

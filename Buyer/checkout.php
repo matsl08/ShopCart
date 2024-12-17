@@ -34,17 +34,6 @@ if(isset($_POST["add_more_products"])) {
 
 
 //OOP Place Order
-/*
-   if (isset($_POST['order'])) {
-      $paymentMethod = htmlspecialchars($_POST['payment_method']);
-      $buyer = new Buyer($connect, $buyer_id);
-  
-      // Use the placeOrder method from Buyer class
-      $result = $buyer->placeOrder($buyerDetails, $paymentMethod);
-  }
-      */
-
-// Temporary non OOP place order
 
 if (isset($_POST['order'])) {
    // Validate form inputs to avoid undefined array key warnings

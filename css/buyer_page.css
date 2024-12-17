@@ -350,3 +350,63 @@ input:focus::placeholder {
   line-height: 1.4; 
   font-size: 16px;  
 }
+
+/* Style for the search bar container */
+.search-form {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Input field for the search bar */
+.search-form input[type="text"] {
+  margin-top: 11px;
+  width: 300px;
+  padding: 10px;
+  font-size: 13px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  height: 8px;
+  transition: border-color 0.3s;
+}
+
+/* Change border color on focus */
+.search-form input[type="text"]:focus {
+  border-color: #ffffff; /* Adjust to match your theme color */
+}
+
+/* Search button */
+.search-form button {
+  padding: 5px;
+  font-size: 14px;
+  margin-left: 10px;
+  color: #0d273d;
+  background-color: #fdfdfd; /* Adjust to match your theme */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Change button background on hover */
+.search-form button:hover {
+  background-color: #45a049; /* Slightly darker shade for hover */
+}
+
+/* Adjust responsiveness for smaller screens */
+@media (max-width: 600px) {
+  .search-form {
+      flex-direction: column;
+  }
+
+  .search-form input[type="text"] {
+      width: 100%;
+      margin-bottom: 10px;
+  }
+
+  .search-form button {
+      width: 100%;
+  }
+}
