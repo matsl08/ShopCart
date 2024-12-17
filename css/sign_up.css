@@ -1,0 +1,218 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Body Styling */
+body {
+  background-color: #f4f4f9;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  animation: transitionIn 0.5s ease-in-out; /* Add transition animation */
+}
+
+/* Transition Animation */
+@keyframes transitionIn {
+  from {
+    opacity: 0.5;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Navigation Bar */
+.topnav {
+  background-color: #0d273d;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  z-index: 1000;
+  padding: 10px 20px;
+  top: 0;
+  left: 0;
+  margin: 0;
+}
+
+.topnav h1 {
+  font-size: 1.8rem;
+  margin: 10px 0; 
+}
+
+.topnav h1 span {
+  color: #ffffff;
+  font-weight: bold;
+  font-family: "Tangerine", serif;
+  margin: 10px 0; 
+}
+
+.topnav a {
+  color: #fff;
+  margin-left: 20px;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.topnav a:hover {
+  text-decoration: underline;
+}
+  
+  h1 {
+    font-size: 80px;
+    font-family: "Tangerine", serif;
+    color: rgb(222, 223, 222);
+    position: relative;
+    text-align: center;
+    padding-top: 1px;
+    margin-top: 0px;
+    display: inline-flex;
+    z-index: 1;
+  }
+  
+  header {
+    font-size: 2rem;
+    font-weight: bold;
+    color:#0d273d;
+    text-align: center;
+    margin-bottom: 20px;
+  font-family: Arial, sans-serif;
+
+  }
+
+  
+  
+
+/* Container styling */
+.container {
+  margin-top: 100px; /* Offset for the fixed nav */
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 20px;
+}
+
+.box {
+  background-color: #fff;
+  width: 100%;
+  max-width: 400px;
+  padding: 40px 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Form fields styling */
+.field {
+  margin-bottom: 15px;
+}
+
+.field label {
+  font-weight: bold;
+  color:#0d273d;
+}
+
+.field input[type="text"],
+.field input[type="email"],
+.field input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  background-color: #f4f4f9;
+}
+
+.field input[type="text"]:focus,
+.field input[type="email"]:focus,
+.field input[type="password"]:focus {
+  border-color: #0d273d;
+  background-color: #e8f5e9;
+  outline: none;
+}
+
+.btn {
+  width: 100%;
+  background-color: #0d273d;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #4CAF50;
+}
+
+/* Style for error prompts */
+.error-message, .success-message {
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  margin: 10px 0;
+  opacity: 100;
+  animation: fadeOut 3s forwards; /* Trigger the fadeOut animation */
+}
+
+/* Specific styles for error and success messages */
+.error-message {
+  color: #D8000C;
+  background-color: #FFD2D2;
+  border: 1px solid #D8000C;
+}
+
+.success-message {
+  color: #4F8A10;
+  background-color: #DFF2BF;
+  border: 1px solid #4F8A10;
+}
+
+/* Keyframes for fade-out animation */
+@keyframes fadeOut {
+  0% { opacity: 200; }
+  100% { opacity: 200; }
+}
+
+
+label a {
+  color: #070F2B;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+label a:hover {
+  color: #4CAF50;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .topnav h1 {
+    font-size: 1.5rem;
+  }
+
+  .container {
+    padding: 15px;
+  }
+
+  .box {
+    padding: 30px 20px;
+  }
+
+  .btn {
+    padding: 10px;
+  }
+}
